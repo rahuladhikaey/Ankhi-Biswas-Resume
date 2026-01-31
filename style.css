@@ -1,0 +1,695 @@
+/* Fonts */
+:root {
+  /* Redish Blue Theme (Single Theme) */
+  --bg-color: #050511;
+  /* Very dark blue, almost black */
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  /* Gradient Primary */
+  --primary: #3b82f6;
+  /* Blue for solid fallbacks */
+  --primary-glow: rgba(59, 130, 246, 0.4);
+
+  --secondary: #1e1b4b;
+  /* Deep Indigo */
+
+  --accent-red: #f43f5e;
+  /* Redish Pink */
+  --accent-blue: #3b82f6;
+  /* Bright Blue */
+
+  /* Glass Cards */
+  --glass-bg: rgba(10, 10, 35, 0.6);
+  /* Dark Blue Tint */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Faint white border */
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Classic Dark (The "Before" Theme) */
+[data-theme="classic"] {
+  --bg-color: #020617;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  --primary: #38bdf8;
+  --primary-glow: rgba(56, 189, 248, 0.3);
+  --secondary: #f8fafc;
+
+  --accent-red: #38bdf8;
+  /* Map red to blue for classic look compatibility */
+  --accent-blue: #0ea5e9;
+
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+  /* Reset background image to plain color or subtle gradient */
+  background-image: none;
+}
+
+/* Remove separate dark mode, base is now the only mode */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(244, 63, 94, 0.15) 0%, transparent 40%),
+    /* Red glow top left */
+    radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+  /* Blue glow bottom right */
+  color: var(--text-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* 3D Canvas */
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.heartbeat-line {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+  animation: heartbeat 1.5s infinite ease-in-out;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scaleX(0.1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(0.1);
+    opacity: 0.5;
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  color: var(--accent-red);
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+}
+
+#theme-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+}
+
+
+/* Main Layout */
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: linear-gradient(120deg, var(--accent-red), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Compatibility fix */
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Glassmorphism Cards */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass:hover {
+  transform: translateY(-5px);
+  border-color: rgba(244, 63, 94, 0.3);
+  /* Redish border on hover */
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* Push image to right */
+}
+
+.hero-image img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent-blue);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4),
+    inset 0 0 20px rgba(59, 130, 246, 0.2);
+  transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05) rotate(2deg);
+  border-color: var(--accent-red);
+  box-shadow: 0 0 40px rgba(244, 63, 94, 0.5);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--accent-red);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+  color: white;
+}
+
+.btn.primary:hover {
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-color);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Header Pulse */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pulse-line {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.pulse-line::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 2px;
+  animation: pulse 2s infinite;
+  opacity: 0.7;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleX(1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scaleX(2.5);
+    opacity: 0;
+  }
+}
+
+/* About Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.icon-lg {
+  font-size: 2.5rem;
+  background: linear-gradient(to bottom right, var(--accent-red), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-red), var(--accent-blue));
+  opacity: 0.3;
+}
+
+.timeline-item {
+  margin-bottom: 3rem;
+  position: relative;
+  padding-left: 60px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+  background: var(--bg-color);
+  border: 3px solid var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-content .date {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--accent-red);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-content .location {
+  margin-bottom: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.timeline-content ul {
+  list-style-position: inside;
+  color: var(--text-muted);
+}
+
+/* Skills */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-tag {
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+  color: white;
+  border-color: transparent;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact */
+.contact-box {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+  transition: all 0.2s;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* Footer */
+footer {
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive & Fluid Design */
+
+/* Fluid Typography */
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  /* Scales between 2.5rem and 4.5rem */
+}
+
+h2 {
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+}
+
+.container {
+  width: 100%;
+  padding-left: clamp(1.5rem, 5vw, 3rem);
+  padding-right: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Design updates for specific ranges */
+
+/* 1. Large Desktops (>1400px) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* 2. Laptops & Desktops (1024px - 1399px) */
+@media (max-width: 1399px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* 3. Tablets & Small Laptops (768px - 1023px) */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 120px;
+    align-items: flex-start;
+    /* Align top for better vertical space usage */
+  }
+
+  .about-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* 4. Mobile Devices (<768px) */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+
+  .navbar {
+    padding: 1rem 0;
+  }
+
+  /* Center Hero on Mobile */
+  /* Center Hero on Mobile */
+  .hero {
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  .hero-content {
+    flex-direction: column-reverse;
+    /* Image on top? Or Text on top. Let's do Text on top as requested? Usually image on top is standard but user wants generic "responsive". Let's stick to column (Text top, Image bottom) or typical stacking. Actually column-reverse puts image on top. Let's do Column (Text Top). */
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .hero-image {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 200px;
+    /* Reduced specific for phone/medium feel */
+    height: 200px;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    /* Center buttons */
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Timeline Adjustments */
+  .timeline {
+    margin-left: 0;
+    padding-left: 0;
+    max-width: 100%;
+  }
+
+  .timeline::before {
+    left: 0;
+    /* Move line to far left */
+  }
+
+  .timeline-item {
+    padding-left: 30px;
+    /* Compress padding */
+  }
+
+  .timeline-dot {
+    left: -9px;
+    /* Align dot on the line */
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    gap: 0.8rem;
+  }
+
+  .skill-tag {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 5. Small Phones (<480px) */
+@media (max-width: 480px) {
+  h1 {
+    line-height: 1.2;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    /* Force single column */
+  }
+
+  .loader p {
+    font-size: 0.9rem;
+  }
+
+  /* Tweak glass cards for small screens */
+  .glass {
+    padding: 1.5rem;
+  }
+}

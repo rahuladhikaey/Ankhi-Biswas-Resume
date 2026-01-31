@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANKHI BISWAS | Nursing Intern</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 3D Background Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loader">
+        <div class="heartbeat-line"></div>
+        <p>Initializing Vitals...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="ri-heart-pulse-fill"></i> Ankhi Biswas
+            </a>
+
+            <div class="nav-right">
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="ri-toggle-line"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge">GNM Student of 2022-2025</span>
+                    <h1>ANKHI BISWAS <br> <span class="highlight"> Nursing Intern</span></h1>
+                    <p>"Available for immediate joining."</p>
+                    <div class="hero-btns">
+                        <a href="#experience" class="btn primary">View Experience</a>
+                        <a href="#contact" class="btn secondary">Contact Me</a>
+                    </div>
+                </div>
+               
+            </div>
+
+            <div class="hero-scroll">
+                <span>Scroll Needed</span>
+                <i class="ri-arrow-down-line"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Profile Summary</h2>
+                    <div class="pulse-line"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card glass" style="grid-column: span 2;">
+                        <i class="ri-user-heart-line icon-lg"></i>
+                        <h3>Professional Overview</h3>
+                        <p>Dedicated and proactive nurse with 6
+                            months of hands-on hospital experience
+                            and strong practical knowledge in ward
+                            care. Skilled in-patient assessment, vital
+                            signs monitoring,medication
+                            administration,and
+                            maintaining accurate data
+                            documentation. Known for excellent
+                            communication, teamwork, and the
+                            ability to remain calm in fast-paced
+                            situations. Committed to delivering high
+                            quality patient care and continuously
+                            improving clinical skills in a hospital
+                            ward environment.</p>
+                    </div>
+                    <div class="about-card glass">
+                        <i class="ri-global-line icon-lg"></i>
+                        <h3>Languages</h3>
+                        <p><strong>Bengali</strong> • <strong>Hindi</strong> • <strong>English</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Education</h2>
+                    <div class="pulse-line"></div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass">
+                            <span class="date">Passing Year: 2025</span>
+                            <h3>General Nursing and Midwifery (GNM)</h3>
+                            <p class="location">Global Hiramoni Memorial Nursing Institute</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass">
+                            <span class="date">2022</span>
+                            <h3>Higher Secondary (Arts)</h3>
+                            <p class="location">Birnagar High School</p>
+                            <ul>
+                                <li>Percentage: 87.4%</li>
+                                <li>Board: WBCHSE</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience/Projects -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Work Experience</h2>
+                    <div class="pulse-line"></div>
+                </div>
+
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass">
+                            <span class="date">June 2025 – November 2025 (6th month Internship)</span>
+                            <h3>Nursing Intern</h3>
+                            <p class="location">Sadar District Hospital, Shakti Nagar District Hospital, Tehatta Sub
+                                Divisional Hospital, Hiramoni Nursing Home</p>
+                            <ul>
+                                <li>Prepare the exam room & set up instruments and equipment according to the protocol.
+                                </li>
+                                <li>Documented patient medical histories, complaints, and all patient-related
+                                    communications.</li>
+                                <li>Assisted with an examination, procedure, and treatments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Skills & Competencies</h2>
+                    <div class="pulse-line"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-tag">Teamwork & Leadership</div>
+                    <div class="skill-tag">Time Management</div>
+                    <div class="skill-tag">Effective Communication</div>
+                    <div class="skill-tag">Critical Thinking</div>
+                    <div class="skill-tag">Patients Assessment</div>
+                    <div class="skill-tag">Clinical Research</div>
+                    <div class="skill-tag">BLS (Basic Life Support)</div>
+                    <div class="skill-tag">Recording Patient Medical History</div>
+                    <div class="skill-tag">Electrocardiogram (ECG)</div>
+                    <div class="skill-tag">Administering Injection</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-box glass">
+                    <h2>Contact Me</h2>
+                    <p>"Available for immediate joining."</p>
+
+                    <div class="contact-links" style="flex-direction: column; gap: 1rem;">
+                        <a href="A-resume.pdf" class="contact-btn" target="_blank">
+                            <i class="ri-file-text-line"></i> View Resume
+                        </a>
+                        <a href="mailto:ankhib34@gmail.com" class="contact-btn">
+                            <i class="ri-mail-send-line"></i> ankhib34@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/ankhi-biswas-b6a6443a4" class="contact-btn"
+                            target="_blank">
+                            <i class="ri-linkedin-box-line"></i> LinkedIn Profile
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+                        <p><i class="ri-map-pin-line"></i> Shyamnagar, Kamgachi, Nadia, 741254</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Ankhi Biswas.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
